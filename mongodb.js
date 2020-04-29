@@ -5,10 +5,6 @@ const { MongoClient, ObjectID } = require('mongodb')
 const connectionURL = 'mongodb://127.0.0.1:27017'
 const datbaseName = 'task-manager'
 
-const id = new ObjectID()
-console.log(id)
-console.log(id.getTimestamp())
-
 MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) => {
     if (error) {
         console.log('Unable to connect to database!')
@@ -16,56 +12,24 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
 
     const db = client.db(datbaseName)
 
-    db.collection('users').insertOne({
-        _id: id,
-        name: 'Nikhil Gupta',
-        age: '21'
-    }, (error, result) => {
+    // db.collection('users').findOne({ _id: new ObjectID("5ea85f0251bf06048858f9e7") }, (error, user) => {
+    //     if (error) {
+    //         return console.log('Unable to fetch')
+    //     }
+
+    //     console.log(user)
+    // })
+
+    db.collection('task').findOne({ _id: new ObjectID("5ea861538810c5316026600c") }, (error, task) => {
         if (error) {
-            return console.log('Unable to inster user')
+            return console.log('Unable to fetch!')
         }
 
-        console.log(result.ops)
-
+        console.log(task)
     })
 
-    // db.collection('users').insertMany([
-    //     {
-    //         name: 'shlok',
-    //         age: '20'
-    //     },
-    //     {
-    //         name: 'Gaurav',
-    //         age: '20'
-    //     }
-    // ], (error, result) => {
-    //     if (error) {
-    //         return console.log('Unable to insert Documets!')
-    //     }
+    db.collection('task').find({ completed: false }).toArray((error, tasks) => {
+        console.log(tasks)
 
-    //     console.log(result.ops)
-
-
-    // })
-
-    // db.collection('task').insertMany([
-    //     {
-    //         description: 'clean the house',
-    //         completed: true
-    //     },
-    //     {
-    //         description: 'Renew Inspection',
-    //         completed: false
-    //     },
-    //     {
-    //         description: 'Pots Plants',
-    //         completed: false
-    //     }
-    // ], (error, result) => {
-    //     if (error) {
-    //         return console.log('Unable to insert Documents!')
-    //     }
-
-    //     console.log(result.ops)
-    // })
+    })
 })
