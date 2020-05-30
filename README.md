@@ -10,6 +10,10 @@
 
 ***Pure Backend Project connection with Database*** <br>
 In this Api You can login and save your data it will work on postman so to test the Api you have create<br>
-production environment to the postman. Process to create production environment is given below:- <br>
+production environment to the postman. Procuder to create production environment and handle API in postman is given in the pdf file link below:- <br>
+
+** Procuder Follow:- ** https://drive.google.com/file/d/1V9GvCt4F20WCQZ8-ZC0qBjjcuDvysSRQ/view?usp=sharing
+
+<br>
 
 **Production Link:-** https://shah-task-manager20.herokuapp.com
